@@ -6,10 +6,31 @@
 // Kjo listë duhet të popullohet me numrin e karaktereve
 // të përcjellë nga përdoruesi për çdo rresht me anë të funksionit “scanf”.
 #include <stdio.h>
-
+#include <string.h>
+void populate(char M[][20], int rows, int list[]) {
+    for (int i = 0; i < rows; i++) {
+        list[i] = strlen(M[i]);
+    }
+}
 int main() {
-    int n;
-    char M[n][20];
+    int rows;
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    char M[rows][20];
+    int list[rows];
 
+    getchar();
+    
+    printf("Enter values: \n");
+    for (int i = 0; i < rows; i++) {
+        printf("Enter text for row %d: ", i + 1);
+        scanf("%19[^\n]", M[i]);
+        getchar();
+    }
 
+    populate(M, rows, list);
+    for (int i = 0; i < rows; i++) {
+        printf("%d ", list[i]);
+    }
+    printf("\n");
 }
